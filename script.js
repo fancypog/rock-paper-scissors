@@ -1,31 +1,39 @@
 function getComputerChoice() {
-    choices = ["ROCK", "PAPER", "SCISSORS"]
+    const choices = ["ROCK", "PAPER", "SCISSORS"]
     const radElement = choices[Math.floor(Math.random()* choices.length)]
     return radElement
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "It's a draw!"
+    let result;
+    if (playerSelection === computerSelection) {
+        result = "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "It's a draw!"
     } 
     
-    else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-        return "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You win!"
+    else if (playerSelection === "ROCK" && computerSelection == "SCISSORS") {
+        result =  "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You win!"
     } 
     
-    else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-        return "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You win!"
+    else if (playerSelection === "PAPER" && computerSelection == "ROCK") {
+        result =  "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You win!"
     } 
     
-    else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-            return "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You win!"
+    else if (playerSelection === "SCISSORS" && computerSelection == "PAPER") {
+        result =  "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You win!"
     }
 
     else {
-        return "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You lose!"
+        result =  "You: " + playerSelection + "\n" + "Computer: " + computerSelection + "\n" + "You lose!"
     }
+
+    document.querySelector('.result').textContent = result;
 }
 
-const playerSelection = prompt("Rock, Paper, Scissors!").toUpperCase();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+const rock = document.querySelector('#rock')
+const paper = document.querySelector('#paper')
+const scissors = document.querySelector('#scissors')
+
+rock.addEventListener('click', function() {playRound("ROCK", getComputerChoice());});
+paper.addEventListener('click', function() {playRound("PAPER", getComputerChoice());});
+scissors.addEventListener('click', function() {playRound("SCISSORS", getComputerChoice());});
+
