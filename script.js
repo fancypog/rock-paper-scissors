@@ -37,3 +37,8 @@ rock.addEventListener('click', function() {playRound("ROCK", getComputerChoice()
 paper.addEventListener('click', function() {playRound("PAPER", getComputerChoice());});
 scissors.addEventListener('click', function() {playRound("SCISSORS", getComputerChoice());});
 
+const score = {
+    wins: 0,
+    losses: 0,
+    ties: 0
+};
